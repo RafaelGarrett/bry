@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Empresa extends Model
 {
@@ -11,11 +13,11 @@ class Empresa extends Model
 
     protected $fillable = ['nome', 'cnpj', 'endereco'];
 
-    public function funcionarios() {
+    public function funcionarios(): HasMany {
         return $this->hasMany(Funcionario::class);
     }
 
-    public function clientes() {
-        return $this->hasMany(Cliente::class);
+    public function clientes(): belongsToMany {
+        return $this->belongsToMany(Cliente::class);
     }    
 }

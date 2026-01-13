@@ -21,6 +21,13 @@ return new class extends Migration
             $table->string('senha');
             $table->timestamps();
         });
+
+        Schema::create('cliente_empresa', function (Blueprint $table) {
+            $table->foreignId('cliente_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('empresa_id')->constrained()->cascadeOnDelete();
+            $table->primary(['cliente_id', 'empresa_id']);
+        });
+           
     }
 
     /**
@@ -28,6 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('cliente_empresa');
         Schema::dropIfExists('clientes');
     }
 };

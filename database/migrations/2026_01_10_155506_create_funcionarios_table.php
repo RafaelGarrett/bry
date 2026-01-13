@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('empresa_id')
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->string('login');
             $table->string('nome');
             $table->string('cpf');

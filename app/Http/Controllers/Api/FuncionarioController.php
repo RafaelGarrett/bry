@@ -14,7 +14,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        $funcionarios = Funcionario::all();
+        $funcionarios = Funcionario::with('empresa')->get();
         return FuncionarioResource::collection($funcionarios);
     }
 

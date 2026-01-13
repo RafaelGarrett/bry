@@ -20,6 +20,8 @@ class EmpresaResource extends JsonResource
             'cnpj' => $this->cnpj,
             'endereco' => $this->endereco,
             'created_at' => $this->created_at,
+            'funcionarios' => FuncionarioResource::collection($this->whenLoaded('funcionarios')),
+            'clientes' => ClienteResource::collection($this->whenLoaded('clientes')),
         ];
     }
 }

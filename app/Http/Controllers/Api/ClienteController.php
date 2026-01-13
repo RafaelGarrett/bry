@@ -14,7 +14,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::with('empresa')->get();
         return ClienteResource::collection($clientes);
     }
 

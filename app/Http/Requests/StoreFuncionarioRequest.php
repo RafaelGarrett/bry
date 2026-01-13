@@ -22,6 +22,7 @@ class StoreFuncionarioRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'empresa_id' => ['required'],
             'login' => ['required'],
             'nome' => ['required', 'max:30'],
             'cpf' => ['required'],
@@ -34,6 +35,7 @@ class StoreFuncionarioRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'empresa_id.required' => 'O campo :attribute é obrigatório.',
             'login.required' => 'O campo :attribute é obrigatório.',
             'nome.required' => 'O campo :attribute é obrigatório.',
             'cpf.required' => 'O campo :attribute é obrigatório.',

@@ -14,7 +14,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::all();
+        $empresas = Empresa::with(['funcionarios', 'clientes'])->get();
         return EmpresaResource::collection($empresas);
     }
 

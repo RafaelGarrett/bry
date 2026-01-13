@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\EmpresaResource;
 
 class FuncionarioResource extends JsonResource
 {
@@ -16,6 +17,7 @@ class FuncionarioResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'empresa_id' => new EmpresaResource($this->whenLoaded('empresa')),
             'login' => $this->login,
             'nome' => $this->nome,
             'cpf' => $this->cpf,

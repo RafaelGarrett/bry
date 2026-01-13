@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\EmpresaResource;
 
 class ClienteResource extends JsonResource
 {
@@ -23,6 +24,7 @@ class ClienteResource extends JsonResource
             'endereco' => $this->endereco,
             'senha' => $this->senha,
             'created_at' => $this->created_at,
+            'empresas' => EmpresaResource::collection($this->whenLoaded('empresas'))
         ];
     }
 }

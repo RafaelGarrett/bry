@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Funcionario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['login', 'nome', 'cpf', 'email', 'endereco', 'senha'];
+    protected $fillable = ['empresa_id', 'login', 'nome', 'cpf', 'email', 'endereco', 'senha'];
 
-    public function empresas() {
-        return $this->belongsToMany(Empresa::class);
+    public function empresa(): BelongsTo {
+        return $this->belongsTo(Empresa::class);
     }
 }
