@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cliente;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Resources\ClienteResource;
+use App\Models\Empresa;
 
 class ClienteController extends Controller
 {
@@ -32,6 +33,7 @@ class ClienteController extends Controller
     public function store(StoreClienteRequest $request)
     {
         $cliente = Cliente::create($request->validated());
+        $cliente->empresas()->attach($request->input('empresas'));
         return new ClienteResource($cliente);
     }
 

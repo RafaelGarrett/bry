@@ -27,7 +27,21 @@ class StoreClienteRequest extends FormRequest
             'cpf' => ['required'],
             'email' => ['required', 'email', 'unique:clientes,email'],
             'endereco' => ['required', 'max:70'],
-            'senha' => ['required', 'string', 'min:6']
+            'senha' => ['required', 'string', 'min:6'],
+            'empresas' => ['array', 'exists:empresas,id']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'login.required' => 'O campo :attribute é obrigatório.',
+            'nome.required' => 'O campo :attribute é obrigatório.',
+            'cpf.required' => 'O campo :attribute é obrigatório.',
+            'email.unique' => 'Esse e-mail já está em uso.',
+            'endereco.required' => 'O campo :attribute é obrigatório.',
+            'senha.required' => 'O campo :attribute é obrigatório.',
+            'empresas.exists' => 'Empresa não encontrada.'
         ];
     }
 }

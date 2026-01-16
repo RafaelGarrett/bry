@@ -10,7 +10,7 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['empresas', 'login', 'nome', 'cpf', 'email', 'endereco', 'senha'];
+    protected $fillable = ['login', 'nome', 'cpf', 'email', 'endereco', 'senha'];
 
     public function empresas(): belongsToMany {
         return $this->belongsToMany(Empresa::class);
